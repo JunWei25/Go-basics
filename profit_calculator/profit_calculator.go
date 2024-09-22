@@ -22,7 +22,7 @@ func main() {
 	earningsAfterTax := float64(earningsBeforeTax) * (1 - taxrate/100)
 	ratioTax := earningsBeforeTax / earningsAfterTax
 
-	fmt.Println(earningsBeforeTax)
-	fmt.Println(earningsAfterTax)
-	fmt.Println(ratioTax)
+	fmt.Printf("Earnings Before Tax: %v\n", earningsBeforeTax)
+	fmt.Println("Earnings After Tax:", earningsAfterTax)
+	fmt.Println("Ratio", ratioTax)
 }
