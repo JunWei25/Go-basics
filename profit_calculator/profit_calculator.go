@@ -5,24 +5,31 @@ import (
 )
 
 func main() {
-	var revenue float64
-	var expenses float64
-	var taxrate float64
+	//var revenue float64
+	//var expenses float64
+	//var taxrate float64
 
-	fmt.Print("Revenue: ")
-	fmt.Scan(&revenue)
+	revenue := getUserInput("Revenue: ")
+	expenses := getUserInput("Expenses: ")
+	taxrate := getUserInput("Tax Rate: ")
 
-	fmt.Print("Expenses: ")
-	fmt.Scan(&expenses)
+	ebt, profit, ratio := calculateFinancials(revenue, expenses, taxrate)
 
-	fmt.Print("Tax Rate: ")
-	fmt.Scan(&taxrate)
+	fmt.Printf("Earnings Before Tax: %.1f\n", ebt)
+	fmt.Printf("Earnings After Tax: %.1f\n", profit)
+	fmt.Printf("Ratio: %.3f\n", ratio)
+}
 
+func calculateFinancials(revenue, expenses, taxrate float64) (float64, float64, float64) {
 	earningsBeforeTax := revenue - expenses
 	earningsAfterTax := float64(earningsBeforeTax) * (1 - taxrate/100)
 	ratioTax := earningsBeforeTax / earningsAfterTax
+	return earningsBeforeTax, earningsAfterTax, ratioTax
+}
 
-	fmt.Printf("Earnings Before Tax: %v\n", earningsBeforeTax)
-	fmt.Println("Earnings After Tax:", earningsAfterTax)
-	fmt.Println("Ratio", ratioTax)
+func getUserInput(infoText string) float64 {
+	var userInput float64
+	fmt.Print(infoText)
+	fmt.Scan(&userInput)
+	return userInput
 }
