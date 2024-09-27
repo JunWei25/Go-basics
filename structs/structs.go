@@ -13,12 +13,25 @@ func main() {
 
 	var appUser *user.User
 
-	appUser, err := user.NewUser(userFirstName, userLastName, userBirthdate)
+	appUser, err := user.New(userFirstName, userLastName, userBirthdate)
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+
+	admin := user.NewAdmin("test@example.com", "test123")
+
+	//when using anonymous embedding
+	admin.OutputUserDetails()
+	admin.ClearUserName()
+	admin.OutputUserDetails()
+
+	// when using explicit embedding
+	// admin.User.OutputUserDetails()
+	// admin.User.ClearUserName()
+	// admin.User.OutputUserDetails()
+
 	// appUser = user{
 	// 	userFirstName,
 	// 	userLastName,
