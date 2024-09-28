@@ -10,9 +10,9 @@ import (
 )
 
 type Note struct {
-	Title     string
-	Content   string
-	CreatedAt time.Time
+	Title     string    `json:"Note title"`
+	Content   string    `json:"Note content"`
+	CreatedAt time.Time `json: "created_at"`
 }
 
 // pointer isnt used because it isnt editing/updating the note
